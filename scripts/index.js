@@ -4,6 +4,10 @@ var DateTime = luxon.DateTime;
 // Get current date and time
 let now = DateTime.now();
 
+//Users day start and end times
+let selectedStartTime = Number($('#startHour').val());
+let selectedEndTime = Number($('#endHour').val());
+
 // Get todays date formatted
 let today = DateTime.now().toLocaleString(DateTime.DATE_FULL)
 // Insert on page
@@ -33,21 +37,20 @@ let renderHour = function(hour) {
             </div>`
 }
 
-
 // function that creates and appends an item for each our in the day with a time label and a save button
 function createCalendar() {
-        // Get the calendar container
-        let container = $('.container');
+    let container = $('.container');
 
-        // Loop through each hour in the day
-        for (let i = 0; i < 24; i++) {
-            // Create a new hour
-            let hour = renderHour(i);
-            // Append the hour to the container
-            container.append(hour);
-        }
+
+
+    // Loop through each hour in a day
+    for (let i = selectedStartTime; i < selectedEndTime; i++) {
+        let hour = renderHour(i);
+        container.append(hour);
+    }
+
+    updateHoursFromLocalStorage();
 }
-
 
 // On clicking save, grab all the data available and save it to local storage
 
