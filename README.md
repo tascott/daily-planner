@@ -24,11 +24,13 @@ Each hour block contains a text box - enter your plan for this hour and press th
 
 The start/end time and all text area data is saved to local storage.
 
+[Link to working site](https://tascott.github.io/daily-planner/)
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="https://user-images.githubusercontent.com/18272434/214101423-a5eee153-92a4-490f-8d81-75c8fe37d6b0.png" width="550">
+
 
 ## Credits
 
