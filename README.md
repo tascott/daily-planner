@@ -1,7 +1,5 @@
 
-# Project Title
-
-Week 7 Challenge - Daily Planner
+# Week 7 Challenge - Daily Planner
 
 
 ## Description
