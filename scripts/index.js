@@ -97,8 +97,10 @@ $('.container').on('keyup', '.hour-text', function() {
 
 // On clicking save, grab all the data available and save it to local storage
 $('.container').on('click', '.saveBtn', function() {
+    let label = $(this);
     let hour = $(this).parent().data('start');
     let text = $(this).siblings('.content').children('.hour-text').val();
+    let icon = $(this).find('i');
     let thisHour = {time: hour, text: text};
 
     dayData = getFromLocalStorage() || [];
@@ -117,6 +119,16 @@ $('.container').on('click', '.saveBtn', function() {
             dayData.push(thisHour);
         }
     }
+
+    // change save icon to tick icon for two seconds to indicate success
+    $(this).addClass('success');
+
+
+    icon.removeClass('fa-save').addClass('fa-check');
+    setTimeout(function() {
+        icon.removeClass('fa-check').addClass('fa-save');
+        label.removeClass('success');
+    }, 2000);
 
     $(this).prop('disabled', true);
 

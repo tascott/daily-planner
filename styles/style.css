@@ -102,6 +102,10 @@ textarea {
   color: white;
 }
 
+.saveBtn.success {
+  background-color: #27b527;
+}
+
 .saveBtn:disabled {
   opacity: 0.5;
 }
