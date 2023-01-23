@@ -27,6 +27,34 @@
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
+      <div id="calendar-settings">
+        <!-- Select box to choose start time from midnight to 9am -->
+        <label for="startHour">Start time:</label>
+        <select id="startHour" class="form-control">
+          <option value="0" selected>12am</option>
+          <option value="1">1am</option>
+          <option value="2">2am</option>
+          <option value="3">3am</option>
+          <option value="4">4am</option>
+          <option value="5">5am</option>
+          <option value="6">6am</option>
+          <option value="7">7am</option>
+          <option value="8">8am</option>
+          <option value="9">9am</option>
+        </select>
+        <!-- Select box to choose end time from 5pm to midnight -->
+        <label for="endHour">End time:</label>
+        <select id="endHour" class="form-control">
+          <option value="17">5pm</option>
+          <option value="18">6pm</option>
+          <option value="19">7pm</option>
+          <option value="20">8pm</option>
+          <option value="21">9pm</option>
+          <option value="22">10pm</option>
+          <option value="23">11pm</option>
+          <option value="24" selected>12pm</option>
+        </select>
+      </div>
     </header>
     <div class="container">
       <!-- Timeblocks go here -->

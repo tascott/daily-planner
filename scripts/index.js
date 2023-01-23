@@ -5,8 +5,10 @@ var DateTime = luxon.DateTime;
 let now = DateTime.now();
 
 //Users day start and end times
-let selectedStartTime = Number($('#startHour').val());
-let selectedEndTime = Number($('#endHour').val());
+let start = Number(localStorage.getItem('startHour')) || 0;
+let end = Number(localStorage.getItem('endHour')) || 24;
+$('#startHour').val(start);
+$('#endHour').val(end);
 
 // Get todays date formatted
 let today = DateTime.now().toLocaleString(DateTime.DATE_FULL)
@@ -16,6 +18,16 @@ $('#currentDay').text(today)
 //Get current time
 let timeNow =  DateTime.now().toLocaleString(DateTime.TIME_SIMPLE)
 
+
+// Refresh when times changed
+$('#startHour, #endHour').on('change', function() {
+    let selectedStartTime = Number($('#startHour').val());
+    let selectedEndTime = Number($('#endHour').val());
+    localStorage.setItem('startHour', selectedStartTime);
+    localStorage.setItem('endHour', selectedEndTime);
+    $('.container').empty();
+    createCalendar();
+});
 
 // The base HTML structure of each hour in our calendar
 let renderHour = function(hour) {
@@ -41,10 +53,12 @@ let renderHour = function(hour) {
 function createCalendar() {
     let container = $('.container');
 
-
+    // set #starthour and #endhour to the values from local storage
+    start = Number(localStorage.getItem('startHour')) || 0;
+    end = Number(localStorage.getItem('endHour')) || 24;
 
     // Loop through each hour in a day
-    for (let i = selectedStartTime; i < selectedEndTime; i++) {
+    for (let i = start; i < end; i++) {
         let hour = renderHour(i);
         container.append(hour);
     }
@@ -63,6 +77,11 @@ $('.container').on('click', '.saveBtn', function() {
 
 
 createCalendar();
+
+let saveToLocalStorage = function(dayData) {
+    localStorage.setItem('calendarData', JSON.stringify(dayData));
+}
+
 
 
 // Loop and run the update function every second, need to find a way to make sure we don't clear stuff when entering - maybe a flag?
