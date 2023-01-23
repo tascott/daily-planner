@@ -1,87 +1,40 @@
-# Third-Party APIs: Work Day Scheduler
 
-## Your Task
+# Project Title
 
-Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
-
-You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
-
-## User Story
-
-```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
- 
-## Acceptance Criteria
-
-The app should:
-
-* Display the current day at the top of the calender when a user opens the planner.
- 
-* Present timeblocks for standard business hours when the user scrolls down.
- 
-* Color-code each timeblock based on past, present, and future when the timeblock is viewed.
- 
-* Allow a user to enter an event when they click a timeblock
-
-* Save the event in local storage when the save button is clicked in that timeblock.
-
-* Persist events between refreshes of a page
-
-The following animation demonstrates the application functionality:
-
-![A user clicks on slots on the color-coded calendar and edits the events.](./images/05-third-party-apis-homework-demo.gif)
+Week 7 Challenge - Daily Planner
 
 
-## Grading Requirements
+## Description
 
-This homework is graded based on the following criteria: 
+This application shows twenty four 1 hour time blocks to help you organise your day. The current day is show at the top, the current hour is highlighted green. Previous hours are red and future hours blue. 
 
-### Technical Acceptance Criteria: 40%
+Users can also choose when their day starts and ends with simple dropdowns.
 
-* Satisfies all of the above acceptance criteria plus the following:
 
-  * Uses a date utility library to work with date and time
+## Installation
 
-### Deployment: 32%
+Just clone or download the repository, and open index.html in your browser.
 
-* Application deployed at live URL
 
-* Application loads with no errors
+## Usage
 
-* Application GitHub URL submitted
+Start by selecting your days start time and end time, the UI will update and remove the unnecessary hour blocks. 
 
-* GitHub repo contains application code
+Each hour block contains a text box - enter your plan for this hour and press the save icon - on success you will see the save icon will change to a tick. 
 
-### Application Quality: 15%
+The start/end time and all text area data is saved to local storage.
 
-* Application user experience is intuitive and easy to navigate
 
-* Application user interface style is clean and polished
 
-* Application resembles the mock-up functionality provided in the homework instructions
+## Screenshots
 
-### Repository Quality: 13%
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-* Repository has a unique name
+## Credits
 
-* Repository follows best practices for file structure and naming conventions
+N/A
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* Repository contains multiple descriptive commit messages
+## License
 
-* Repository contains quality README file with description, screenshot, and link to deployed application
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+N/A
