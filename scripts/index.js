@@ -21,15 +21,15 @@ let timeNow =  DateTime.now().toLocaleString(DateTime.TIME_SIMPLE)
 // on page load or save update every hour slot with data from local storage
 let dayData = [];
 
-// Refresh when times changed
-$('#startHour, #endHour').on('change', function() {
-    let selectedStartTime = Number($('#startHour').val());
-    let selectedEndTime = Number($('#endHour').val());
-    localStorage.setItem('startHour', selectedStartTime);
-    localStorage.setItem('endHour', selectedEndTime);
-    $('.container').empty();
-    createCalendar();
-});
+// Functions to save and get data from local storage
+let saveToLocalStorage = function(dayData) {
+    localStorage.setItem('calendarData', JSON.stringify(dayData));
+}
+
+let getFromLocalStorage = function(){
+    let data = JSON.parse(localStorage.getItem('calendarData'));
+    return data;
+}
 
 // The base HTML structure of each hour in our calendar
 let renderHour = function(hour) {
@@ -68,6 +68,20 @@ function createCalendar() {
     updateHoursFromLocalStorage();
     updateColors();
 }
+
+/*
+General Event Listeners
+*/
+
+// Refresh when times changed
+$('#startHour, #endHour').on('change', function() {
+    let selectedStartTime = Number($('#startHour').val());
+    let selectedEndTime = Number($('#endHour').val());
+    localStorage.setItem('startHour', selectedStartTime);
+    localStorage.setItem('endHour', selectedEndTime);
+    $('.container').empty();
+    createCalendar();
+});
 
 //if the textarea is not empty, make saveBtn active
 $('.container').on('keyup', '.hour-text', function() {
@@ -109,14 +123,9 @@ $('.container').on('click', '.saveBtn', function() {
     saveToLocalStorage(dayData);
 });
 
-let saveToLocalStorage = function(dayData) {
-    localStorage.setItem('calendarData', JSON.stringify(dayData));
-}
-
-let getFromLocalStorage = function(){
-    let data = JSON.parse(localStorage.getItem('calendarData'));
-    return data;
-}
+/*
+App logic
+*/
 
 let updateHoursFromLocalStorage = function() {
     let data = getFromLocalStorage();
@@ -135,7 +144,6 @@ let updateColors = function() {
     // Get current time and update the colors of the hours
     now = DateTime.now();
     let currentHour = now.hour;
-    console.log(currentHour)
     // loop over all the hours in the container and see which ones matches the current hour
     $('.hour').each(function() {
         let hour = $(this).data('hour');
@@ -149,11 +157,9 @@ let updateColors = function() {
     });
 }
 
-
-createCalendar();
-
-// Loop and run the update function every second, need to find a way to make sure we don't clear stuff when entering - maybe a flag?
-
+/*
+Updating Functionality
+*/
 
 // Find out how many seconds are left in the current minute so we can update on the minute
 var time = now;
@@ -162,3 +168,6 @@ var secondsRemaining = (60 - time.second) * 1000;
 setTimeout(function() {
     setInterval(updateColors, 60000);
 }, secondsRemaining);
+
+//Start app
+createCalendar();
